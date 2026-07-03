@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Pagina di Benvenuto</title>
+    
+    <meta name="description" content="Una semplice pagina HTML con stile minimalista.">
+    
+    <meta name="robots" content="index, follow">
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>   
+<header class="stripa-animata"></header>
+
+    <main>
+        <h1>MUSICISTI AL CENTRO</h1>
+
+        <h2>...lavori in corso...</h2>
+
+<details id="mio-manifesto" class="manifesto-container">
+    <summary class="manifesto-titolo"> > LEGGI IL MANIFESTO < </summary>
+    <div class="manifesto-contenuto">
+        <p><span>Presentiamo l&rsquo;associazione &ldquo;</span><strong><span>Musicisti al Centro</span></strong><span>&rdquo;, che si propone di tutelare i piccoli eventi musicali e chi vi lavora, di dimostrare il valore socialmente ed economicamente positivo di queste pratiche, e la necessit&agrave; da parte delle istituzioni locali e dello Stato di un&rsquo;adeguata regolamentazione, se non addirittura di una vera e propria riforma.</span></p>
+        <p><br></p>
+        <p><span>Dopo anni di formazione, esperienza professionale e sfruttamento lavorativo, la costituzione di tale movimento &egrave; fisiologica e si determina in un quadro che rappresenta, a nostro avviso, un punto di non ritorno.</span></p>
+        <p><br></p>
+        <p><em><span>Ci saranno dei motivi secondo i quali la quasi totalit&agrave; di queste manifestazioni artistiche &egrave; relegata a un vero e proprio meccanismo di mercato nero?</span></em></p>
+        <p><br></p>
+        <p><span>Secondo noi s&igrave;:&nbsp;</span></p>
+<ul>
+    <li>
+        <p role="presentation"><span>- la legalit&agrave; del rapporto organizzatore-lavoratore &egrave; economicamente insostenibile e in assenza di tutele;</span></p>
+    </li>
+    <li>
+        <p role="presentation"><span>- le burocrazie sono penalizzanti e le normative vigenti anacronistiche e fuori contesto;&nbsp;</span></p>
+    </li>
+    <li>
+        <p role="presentation"><span>- la riscossione dei diritti di esecuzione grava sproporzionatamente sull&rsquo;economia dei piccoli eventi;</span></p>
+    </li>
+</ul>
+<p><br></p>
+<p><span>Tutto questo annichilisce le pratiche necessarie alla performance e alla fruizione della popular music, amplificando forme di marginalizzazione e isolamento ormai tipiche della societ&agrave; odierna.</span></p>
+<p><br></p>
+<p><span>Noi musicisti siamo inevitabilmente portati ad autodenunciare un&nbsp;</span><strong><span>compromesso illegale</span></strong><span>, fatto alla luce del sole e che dura ormai da decenni: musicisti e organizzatori a&nbsp;</span><strong><span>spartirsi le briciole</span></strong><span>, sotto lo scacco di un malsano rapporto di sottomissione all&rsquo;autorit&agrave; di turno, la quale decide se chiudere un occhio o chiudere un locale.</span></p>
+<p><br></p>
+<p><span>Sfidiamo, anzi, invitiamo chiunque a delineare pratiche ad oggi esistenti, che siano legali e al contempo sostenibili. Fatevi avanti.</span></p>
+</details>
+
+    <h2>Presto apriremo la nostra associazione.
+        <br>Vuoi sostenerci e mantenerti aggiornato?
+        <br>Iscriviti alla nostra mailing list
+    </h2>
+
+<form action="https://formspree.io/f/xvzjdpaz" method="POST">
+  <label for="nome">Nome</label>
+  <input type="text" id="nome" name="nome" required>
+
+  <label for="cognome">Cognome</label>
+  <input type="text" id="cognome" name="cognome" required>
+
+  <label for="email">Email</label>
+  <input type="email" id="email" name="email" required>
+
+  <button type="submit">ISCRIVITI</button>
+</form>
+
+    <h2>Oppure unisciti alla nostra community WhatsApp
+        <br>cliccando il pulsante qui sotto:
+    </h2>
+
+    <a href="https://chat.whatsapp.com/LN1KHNXNQE2KpZm04rHt8d" target="_blank" class="whatsapp-btn" title="Unisciti alla community WhatsApp">
+  <img src="img/whatsapp_logo_png.png" alt="Logo WhatsApp" class="whatsapp-icon">
+</a>
+
+    </main>
+
+    <footer class="stripa-animata"></footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const details = document.getElementById("mio-manifesto");
+            const contenuto = details.querySelector(".manifesto-contenuto");
+
+            details.addEventListener("toggle", () => {
+                if (details.open) {
+                    contenuto.style.height = "0px";
+                    contenuto.offsetHeight;
+                    contenuto.style.height = contenuto.scrollHeight + "px";
+                } else {
+                    contenuto.style.height = "0px";
+                }
+            });
+
+            // Imposta altezza 0 all'avvio per sicurezza
+            contenuto.style.height = "0px";
+        });
+    </script>
+</body>
+</html>   
