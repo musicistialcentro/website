@@ -1,0 +1,154 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #000000;
+    
+    color: #ffffff;
+    
+    font-family: "Courier New", Courier, monospace;
+    
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    flex-grow: 1;
+    width: 100%;
+}
+
+h1 {
+    font-size: clamp(0.8rem, 5vw, 5.5rem);
+    
+    font-weight: bold;
+    text-align: center;
+    margin: 0;
+    padding: 2vh 20px;
+}
+h2 {
+    font-size: clamp(0.8rem, 3vw, 2rem);
+    
+    font-weight: normal;
+    text-align: center;
+    margin: 0;
+    padding: 2vh 20px;
+}
+
+.stripa-animata {
+    width: 100%;
+    height: 30px;
+    background-image: url(img/digger_icon.ico); 
+    
+    background-repeat: repeat-x;
+    background-position: center;
+    background-size: contain;
+}
+
+.manifesto-titolo {
+    font-family: "Courier New", Courier, monospace;
+    font-size: clamp(0.8rem, 4vw, 3.5rem);
+    font-weight: bold;
+    color: #ffc904;
+    cursor: pointer;
+    text-align: center;
+    padding: 10px;
+    list-style: none;
+    transition: color 0.3s ease;
+}
+.manifesto-titolo:hover {
+    color: #ff6004;
+}
+.manifesto-titolo::-webkit-details-marker {
+    display: none;
+}
+.manifesto-container {
+    display: grid;
+    width: 80%;
+    margin: 0 auto;
+}
+.manifesto-container[open] {
+    grid-template-rows: 1fr;
+}
+.manifesto-contenuto {
+    overflow: hidden;
+    font-family: "Courier New", Courier, monospace;
+    font-size: clamp(0.7rem, 2.5vw, 1.2rem);
+    line-height: 1.6;
+    text-align: justify;
+    padding: 0 10px;
+    color: #e0e0e0;
+    transition: height 0.5s ease-in-out; 
+    height: 0;
+}
+.manifesto-container[open] .manifesto-contenuto {
+    padding-bottom: 20px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  max-width: 250px;
+  gap: 15px;
+  margin: 0 auto;
+    border: 1px solid white; 
+  border-radius: 8px;
+  padding: 20px;
+   background-color: transparent;
+   font-family: "Courier New", Courier, monospace;
+}
+form label,
+form input,
+form button {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  border-radius: 6px;
+  text-align: center;
+}
+form button {
+  padding: 10px;
+  background-color: #007BFF;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  font-family: "Courier New", Courier, monospace;
+     font-weight: bold;
+}
+form button:hover {
+  background-color: #0056b3;
+}
+
+.whatsapp-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin: 0 auto;
+  
+  background-color: transparent;
+  color: white;
+  text-decoration: none;
+  border: none;
+  
+  padding: 0;
+  border-radius: 6px;
+  font-family: inherit;
+  font-weight: bold;
+  transition: background-color 0.3s;
+  width: fit-content;
+  height: fit-content;
+  box-sizing: border-box;
+}
+.whatsapp-btn:hover {
+  background-color: #128C7E;
+}
+.whatsapp-icon {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+  display: block;
+}   
