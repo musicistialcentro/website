@@ -152,3 +152,11 @@ form button:hover {
   object-fit: contain;
   display: block;
 }   
+
+.QR {
+  display: block;
+  margin: 0 auto;
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+}
