@@ -7,11 +7,18 @@
     
     <title>Musicisti al Centro</title>
     
-    <meta name="description" content="...lavori in corso...">
-    
+    <meta name="description" content="Associazione a tutela dei piccoli eventi musicali.">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="it_IT">
+    <meta property="og:url" content="https://musicistialcentro.github.io/website/">
+    <meta property="og:title" content="Musicisti al Centro">
+    <meta property="og:description" content="Associazione a tutela dei piccoli eventi musicali.">
+    <meta property="og:image" content="https://musicistialcentro.github.io/website/img/digger_icon.png">
     <meta name="robots" content="index, follow">
     
     <link rel="stylesheet" href="style.css">
+
+    <script src="script.js" defer></script>
 
     <link rel="icon" href="img/fav_ico.ico">
 </head>
@@ -20,9 +27,12 @@
 <header class="stripa-animata"></header>
 
     <main>
-        <h1>MUSICISTI AL CENTRO</h1>
 
         <h2>...lavori in corso...</h2>
+
+        <h1>MUSICISTI AL CENTRO</h1>
+
+        <h2>Abbiamo aperto la nostra associazione!</h2>
 
 <details id="mio-manifesto" class="manifesto-container">
     <summary class="manifesto-titolo"> > LEGGI IL MANIFESTO < </summary>
@@ -53,8 +63,7 @@
 <p><span>Sfidiamo, anzi, invitiamo chiunque a delineare pratiche ad oggi esistenti, che siano legali e al contempo sostenibili. Fatevi avanti.</span></p>
 </details>
 
-    <h2>Presto apriremo la nostra associazione.
-        <br>Vuoi sostenerci e mantenerti aggiornato?
+    <h2>Vuoi sostenerci e mantenerti aggiornato?
         <br>Iscriviti alla nostra mailing list
     </h2>
 
@@ -92,23 +101,5 @@
 
     <footer class="stripa-animata"></footer>
 
-    <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            const details = document.getElementById("mio-manifesto");
-            const contenuto = details.querySelector(".manifesto-contenuto");
-
-            details.addEventListener("toggle", () => {
-                if (details.open) {
-                    contenuto.style.height = "0px";
-                    contenuto.offsetHeight;
-                    contenuto.style.height = contenuto.scrollHeight + "px";
-                } else {
-                    contenuto.style.height = "0px";
-                }
-            });
-
-            contenuto.style.height = "0px";
-        });
-    </script>
 </body>
 </html>

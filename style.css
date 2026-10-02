@@ -81,7 +81,6 @@ h2 {
     padding: 0 10px;
     color: #e0e0e0;
     transition: height 0.5s ease-in-out; 
-    height: 0;
 }
 .manifesto-container[open] .manifesto-contenuto {
     padding-bottom: 20px;
