@@ -1,161 +1,245 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-    background-color: #000000;
-    
-    color: #ffffff;
-    
-    font-family: "Courier New", Courier, monospace;
-    
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    flex-grow: 1;
-    width: 100%;
+  background-color: #000000;
+  color: #ffffff;
+  font-family: "Courier New", Courier, monospace;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
 }
 
-h1 {
-    font-size: clamp(0.8rem, 5vw, 5.5rem);
-    
-    font-weight: bold;
-    text-align: center;
-    margin: 0;
-    padding: 2vh 20px;
+main {
+    width: 100%;
+    max-width: 1100px;
 }
-h2 {
-    font-size: clamp(0.8rem, 3vw, 2rem);
-    
-    font-weight: normal;
-    text-align: center;
-    margin: 0;
-    padding: 2vh 20px;
+
+h1,
+.grazie,
+.testo {
+  text-align: center;
+  padding: 2vh 20px;
+}
+
+h1,
+.grazie {
+  font-size: clamp(0.8rem, 5vw, 5.5rem);
+  font-weight: bold;
+}
+
+.testo {
+  font-size: clamp(0.8rem, 3vw, 2rem);
 }
 
 .stripa-animata {
-    width: 100%;
-    height: 30px;
-    background-image: url(img/digger_icon.png); 
-    flex-shrink: 0;
-    background-repeat: repeat-x;
-    background-position: center;
-    background-size: contain;
+  width: 100%;
+  height: 30px;
+  background-image: url(img/digger_icon.png);
+  flex-shrink: 0;
+  background-repeat: repeat-x;
+  background-position: center;
+  background-size: contain;
 }
 
 .manifesto-titolo {
-    font-family: "Courier New", Courier, monospace;
-    font-size: clamp(0.8rem, 4vw, 3.5rem);
-    font-weight: bold;
+  font-size: clamp(1rem, 4.5vw, 4rem);
+  font-weight: bold;
+  color: #ff6004;
+  cursor: pointer;
+  text-align: center;
+  padding: 10px;
+  list-style: none;
+  transition: color 0.5s ease;
+}
+
+@media (hover: hover) {
+  .manifesto-titolo:hover {
     color: #ffc904;
-    cursor: pointer;
-    text-align: center;
-    padding: 10px;
-    list-style: none;
-    transition: color 0.3s ease;
+  }
 }
-.manifesto-titolo:hover {
-    color: #ff6004;
+
+.manifesto-titolo:active {
+  color: #ffc904;
 }
+
 .manifesto-titolo::-webkit-details-marker {
-    display: none;
+  display: none;
 }
+
+.freccia {
+  display: inline-block;
+  transition: transform 0.5s ease-in-out;
+}
+
 .manifesto-container {
-    display: grid;
-    width: 80%;
-    margin: 0 auto;
+  width: 80%;
+  margin: 0 auto;
 }
-.manifesto-container[open] {
-    grid-template-rows: 1fr;
-}
-.manifesto-contenuto {
-    overflow: hidden;
-    font-family: "Courier New", Courier, monospace;
-    font-size: clamp(0.7rem, 2.5vw, 1.2rem);
-    line-height: 1.6;
-    text-align: justify;
-    padding: 0 10px;
-    color: #e0e0e0;
-    transition: height 0.5s ease-in-out; 
-}
+
 .manifesto-container[open] .manifesto-contenuto {
-    padding-bottom: 20px;
+  padding-bottom: 20px;
+}
+
+.manifesto-container[open]:not(.in-chiusura) .freccia-sinistra {
+  transform: rotate(90deg);
+}
+
+.manifesto-container[open]:not(.in-chiusura) .freccia-destra {
+  transform: rotate(-90deg);
+}
+
+.manifesto-contenuto>*+* {
+  margin-top: 1.6em;
+}
+
+.manifesto-contenuto ul {
+  margin-top: 0;
+  padding-left: 1.5em;
+}
+
+.manifesto-contenuto {
+  overflow: hidden;
+  font-size: clamp(0.7rem, 2.5vw, 1.2rem);
+  line-height: 1.6;
+  padding: 0 10px;
+  color: #e0e0e0;
+  transition: height 0.5s ease-in-out;
 }
 
 form {
   display: flex;
   flex-direction: column;
-  max-width: 250px;
+  max-width: 300px;
   gap: 15px;
   margin: 0 auto;
-    border: 1px solid white; 
+  border: 1px solid #ffffff;
   border-radius: 8px;
   padding: 20px;
-   background-color: transparent;
-   font-family: "Courier New", Courier, monospace;
+  transition: background-color 0.8s ease-in-out, color 0.8s ease-in-out;
 }
+
 form label,
 form input,
 form button {
-  display: block;
   width: 100%;
-  box-sizing: border-box;
   border-radius: 6px;
   text-align: center;
 }
+
+form input {
+  padding: 8px;
+  font-size: 16px;
+}
+
 form button {
   padding: 10px;
-  background-color: #007BFF;
-  color: white;
+  background-color: #002d5d;
+  color: #ffffff;
   border: none;
   cursor: pointer;
   font-size: 16px;
-  font-family: "Courier New", Courier, monospace;
-     font-weight: bold;
+  font-family: inherit;
+  font-weight: bold;
+  transition: background-color 0.5s ease;
 }
+
 form button:hover {
-  background-color: #0056b3;
+  background-color: #003c7c;
+}
+
+form button:disabled {
+  background-color: #555555;
+  color: #aaaaaa;
+  cursor: not-allowed;
+}
+.consenso {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  font-size: 0.8rem;
+  text-align: left;
+  cursor: pointer;
+}
+.consenso input {
+  width: auto;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+.consenso a {
+  color: #ff6004;
+}
+.campo-trappola {
+  position: absolute;
+  left: -9999px;
+}
+.esito {
+  text-align: center;
+  white-space: pre-line;
+}
+.esito:empty {
+  display: none;
+}
+.inviato > :not(.esito) {
+  display: none;
+}
+.inviato {
+  background-color: #ffffff;
+  color: #000000;
+  font-weight: bold;
+}
+
+/* ===== Informativa privacy ===== */
+.informativa {
+    max-width: 760px;
+    padding: 0 20px 4vh;
+    line-height: 1.6;
+}
+.informativa h1 {
+    font-size: clamp(1.2rem, 4vw, 2.5rem);
+}
+.informativa h2 {
+    margin: 2em 0 0.5em;
+    font-size: clamp(1rem, 2.5vw, 1.4rem);
+    color: #ff6004;
+}
+.informativa p,
+.informativa ul {
+    margin-bottom: 1em;
+}
+.informativa ul {
+    padding-left: 1.5em;
+}
+.informativa a {
+    color: #ff6004;
+}
+.informativa .aggiornamento {
+    margin-top: 3em;
+    font-size: 0.9em;
+    color: #aaaaaa;
+}
+.informativa .chiudi {
+    text-align: center;
 }
 
 .whatsapp-btn {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
   margin: 0 auto;
-  
-  background-color: transparent;
-  color: white;
-  text-decoration: none;
-  border: none;
-  
-  padding: 0;
-  border-radius: 6px;
-  font-family: inherit;
-  font-weight: bold;
-  transition: background-color 0.3s;
+  border-radius: 16px;
+  transition: background-color 0.5s;
   width: fit-content;
-  height: fit-content;
-  box-sizing: border-box;
 }
+
 .whatsapp-btn:hover {
-  background-color: #128C7E;
+  background-color: #011816;
 }
-.whatsapp-icon {
-  width: 100px;
-  height: 100px;
-  object-fit: contain;
-  display: block;
-}   
 
 .QR {
   display: block;
   margin: 0 auto;
-  width: 100px;
-  height: 100px;
-  object-fit: contain;
 }
