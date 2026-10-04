@@ -10,7 +10,7 @@
   --fs-piccolo: clamp(0.8125rem, 0.75rem + 0.3vw, 0.9375rem);    /* 13 → 15px */
   --fs-base: clamp(1rem, 0.93rem + 0.3vw, 1.1875rem);            /* 16 → 19px */
   --fs-testo: clamp(1.125rem, 0.9rem + 1vw, 1.75rem);            /* 18 → 28px */
-  --fs-sottotitolo: clamp(1.75rem, 1rem + 3vw, 3.5rem);          /* 28 → 56px */
+  --fs-sottotitolo: clamp(1.5rem, 0.9rem + 3vw, 3.5rem);          /* 28 → 56px */
   --fs-titolo: clamp(2rem, 0.9rem + 5vw, 5rem);                  /* 32 → 80px */
   --spazio: clamp(1.25rem, 0.75rem + 2vw, 2.5rem);        /* 20 → 40px tra i blocchi */
   --spazio-piccolo: clamp(0.75rem, 0.5rem + 1vw, 1.25rem); /* 12 → 20px tra testo e ciò che introduce */
@@ -114,6 +114,7 @@ h1, h2,
   color: #ff6004;
   cursor: pointer;
   text-align: center;
+  white-space: nowrap;
   padding: 10px;
   letter-spacing: 0.02em;
   list-style: none;
@@ -143,7 +144,6 @@ h1, h2,
 .freccia-sinistra {
   scale: -1 1;
 }
-
 .manifesto-container {
   width: 100%;
   padding: 0 20px;
@@ -172,7 +172,7 @@ h1, h2,
   font-size: var(--fs-base);
   line-height: 1.65;
   padding: 0 10px;
-  color: #e0e0e0;
+  color: #ffffff;
   transition: height 0.5s ease-in-out;
 }
 .manifesto-contenuto .badge-fine {
