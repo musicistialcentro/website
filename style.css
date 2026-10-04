@@ -4,10 +4,24 @@
   box-sizing: border-box;
 }
 
+/* ===== Scala tipografica ===== */
+:root {
+  --font: "MaCFontRound", "Arial Narrow", sans-serif;
+  --fs-piccolo: clamp(0.8125rem, 0.75rem + 0.3vw, 0.9375rem);    /* 13 → 15px */
+  --fs-base: clamp(1rem, 0.93rem + 0.3vw, 1.1875rem);            /* 16 → 19px */
+  --fs-testo: clamp(1.125rem, 0.9rem + 1vw, 1.75rem);            /* 18 → 28px */
+  --fs-sottotitolo: clamp(1.75rem, 1rem + 3vw, 3.5rem);          /* 28 → 56px */
+  --fs-titolo: clamp(2rem, 0.9rem + 5vw, 5rem);                  /* 32 → 80px */
+  --spazio: clamp(1.25rem, 0.75rem + 2vw, 2.5rem);        /* 20 → 40px tra i blocchi */
+  --spazio-piccolo: clamp(0.75rem, 0.5rem + 1vw, 1.25rem); /* 12 → 20px tra testo e ciò che introduce */
+}
+
 body {
   background-color: #000000;
   color: #ffffff;
-  font-family: "Courier New", Courier, monospace;
+  font-family: var(--font);
+  font-size: var(--fs-base);
+  font-weight: 600;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -15,26 +29,73 @@ body {
   align-items: center;
 }
 
+.avviso {
+  font-size: var(--fs-piccolo);
+  color: #ffc904;
+  letter-spacing: 0.02em;
+}
+
+.logo-titolo {
+  display: block;
+    width: clamp(18rem, 85vw, 40rem);  /* ~85% dello schermo, max 640px */
+  max-width: 100%;
+  height: auto;
+  margin: 0 auto;
+}
+
 main {
     width: 100%;
     max-width: 1100px;
+    padding: var(--spazio) 0;
+}
+
+main > * + * {
+  margin-top: var(--spazio);
+}
+
+main > .testo + * {
+  margin-top: var(--spazio-piccolo);
 }
 
 h1,
 .grazie,
-.testo {
+.testo,
+.avviso {
   text-align: center;
-  padding: 2vh 20px;
+  padding: 0 20px;
+}
+
+h1, h2, h3,
+.grazie {
+  font-weight: 800;
 }
 
 h1,
 .grazie {
-  font-size: clamp(0.8rem, 5vw, 5.5rem);
-  font-weight: bold;
+  font-size: var(--fs-titolo);
+  line-height: 1.1;
+  letter-spacing: 0.02em;
+}
+
+strong, b {
+  font-weight: 700;
 }
 
 .testo {
-  font-size: clamp(0.8rem, 3vw, 2rem);
+  font-size: var(--fs-testo);
+  line-height: 1.3;
+}
+
+h1, h2,
+.grazie,
+.testo,
+.manifesto-titolo {
+  text-wrap: balance;
+}
+
+.manifesto-contenuto p,
+.informativa p {
+  text-wrap: pretty;
 }
 
 .stripa-animata {
@@ -48,82 +109,95 @@ h1,
 }
 
 .manifesto-titolo {
-  font-size: clamp(1rem, 4.5vw, 4rem);
-  font-weight: bold;
+  font-size: var(--fs-sottotitolo);
+  font-weight: 800;
   color: #ff6004;
   cursor: pointer;
   text-align: center;
   padding: 10px;
+  letter-spacing: 0.02em;
   list-style: none;
   transition: color 0.5s ease;
 }
-
 @media (hover: hover) {
   .manifesto-titolo:hover {
     color: #ffc904;
   }
 }
-
 .manifesto-titolo:active {
   color: #ffc904;
 }
-
 .manifesto-titolo::-webkit-details-marker {
   display: none;
 }
-
 .freccia {
   display: inline-block;
-  transition: transform 0.5s ease-in-out;
+  width: 0.9em;
+  aspect-ratio: 3000 / 2360;
+  vertical-align: -0.05em;
+  background-color: currentColor;
+  -webkit-mask: url(img/badge_manifesto.svg) center / contain no-repeat;
+  mask: url(img/badge_manifesto.svg) center / contain no-repeat;
+  transition: rotate 0.5s ease-in-out;
+}
+.freccia-sinistra {
+  scale: -1 1;
 }
 
 .manifesto-container {
-  width: 80%;
+  width: 100%;
+  padding: 0 20px;
   margin: 0 auto;
 }
-
 .manifesto-container[open] .manifesto-contenuto {
   padding-bottom: 20px;
 }
-
 .manifesto-container[open]:not(.in-chiusura) .freccia-sinistra {
-  transform: rotate(90deg);
+  rotate: 90deg;
 }
-
 .manifesto-container[open]:not(.in-chiusura) .freccia-destra {
-  transform: rotate(-90deg);
+  rotate: -90deg;
 }
-
 .manifesto-contenuto>*+* {
   margin-top: 1.6em;
 }
-
 .manifesto-contenuto ul {
   margin-top: 0;
   padding-left: 1.5em;
 }
-
 .manifesto-contenuto {
   overflow: hidden;
-  font-size: clamp(0.7rem, 2.5vw, 1.2rem);
-  line-height: 1.6;
+  max-width: 65ch;
+  margin: 0 auto;
+  font-size: var(--fs-base);
+  line-height: 1.65;
   padding: 0 10px;
   color: #e0e0e0;
   transition: height 0.5s ease-in-out;
+}
+.manifesto-contenuto .badge-fine {
+  display: block;
+  width: 100px;
+  aspect-ratio: 3000 / 2360;
+  margin: 2.5em auto 0;
+  background-color: #e0e0e0;
+  -webkit-mask: url(img/badge.svg) center / contain no-repeat;
+  mask: url(img/badge.svg) center / contain no-repeat;
+  rotate: -90deg;
 }
 
 form {
   display: flex;
   flex-direction: column;
-  max-width: 300px;
+  max-width: 340px;
   gap: 15px;
+  font-size: var(--fs-base);
   margin: 0 auto;
   border: 1px solid #ffffff;
   border-radius: 8px;
   padding: 20px;
   transition: background-color 0.8s ease-in-out, color 0.8s ease-in-out;
 }
-
 form label,
 form input,
 form button {
@@ -131,28 +205,27 @@ form button {
   border-radius: 6px;
   text-align: center;
 }
-
 form input {
   padding: 8px;
-  font-size: 16px;
+  border: none;
+  border-radius: 10px;
+  font-size: var(--fs-base);
+  font-family: inherit;
 }
-
 form button {
   padding: 10px;
   background-color: #002d5d;
   color: #ffffff;
   border: none;
   cursor: pointer;
-  font-size: 16px;
+  font-size: var(--fs-base);
   font-family: inherit;
-  font-weight: bold;
+  font-weight: 800;
   transition: background-color 0.5s ease;
 }
-
 form button:hover {
   background-color: #003c7c;
 }
-
 form button:disabled {
   background-color: #555555;
   color: #aaaaaa;
@@ -161,15 +234,39 @@ form button:disabled {
 .consenso {
   display: flex;
   gap: 10px;
-  align-items: flex-start;
-  font-size: 0.8rem;
+  align-items: center;
+  font-size: var(--fs-piccolo);
   text-align: left;
   cursor: pointer;
 }
 .consenso input {
-  width: auto;
+  appearance: none;
+  -webkit-appearance: none;
+  width: 1.375rem;
+  height: 1.375rem;
   flex-shrink: 0;
-  margin-top: 2px;
+  margin: 0;
+  padding: 0;
+  border: 2px solid #ffffff;
+  border-radius: 6px;
+  background-color: transparent;
+  cursor: pointer;
+  display: inline-grid;
+  place-content: center;
+  transition: background-color 0.2s, border-color 0.2s;
+}
+.consenso input:checked {
+  background-color: #ff6004;
+  border-color: #ff6004;
+}
+.consenso input:checked::before {
+  content: "\2713";
+  color: #000;
+  font: 900 1rem/1 sans-serif;
+}
+.consenso input:focus-visible {
+  outline: 2px solid #ffc904;
+  outline-offset: 2px;
 }
 .consenso a {
   color: #ff6004;
@@ -201,11 +298,11 @@ form button:disabled {
     line-height: 1.6;
 }
 .informativa h1 {
-    font-size: clamp(1.2rem, 4vw, 2.5rem);
+    font-size: var(--fs-sottotitolo);
 }
 .informativa h2 {
     margin: 2em 0 0.5em;
-    font-size: clamp(1rem, 2.5vw, 1.4rem);
+    font-size: clamp(1.125rem, 1rem + 0.6vw, 1.5rem);
     color: #ff6004;
 }
 .informativa p,
@@ -242,4 +339,13 @@ form button:disabled {
 .QR {
   display: block;
   margin: 0 auto;
+  border-radius: 7px;
+}
+
+/* ===== Meno movimento per chi lo chiede ===== */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
 }

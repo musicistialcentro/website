@@ -1,0 +1,107 @@
+/* =========================================================
+   fontmac.css — MaCFont e MaCFontRound (Musicisti al Centro)
+   ---------------------------------------------------------
+   COME USARLO
+   1. Sul sito, crea una cartella "fonts" e caricaci tutti i 12 file .woff
+      (dalle cartelle "WOFF (web)" di entrambe le famiglie).
+   2. Carica questo file nella stessa cartella "fonts", insieme ai .woff.
+   3. Collegalo alle pagine, dentro <head>:
+        <link rel="stylesheet" href="fonts/fontmac.css">
+      (se la pagina si trova in una sottocartella, adatta il percorso,
+       ad es. "../fonts/fontmac.css")
+
+   Pesi: SemiBold = 600 · Bold = 700 · ExtraBold = 800
+   Licenza: SIL Open Font License 1.1 (vedi OFL.txt)
+   ========================================================= */
+
+
+/* ---------- MaCFont (angoli come il logo) ---------- */
+
+@font-face {
+  font-family: "MaCFont";
+  src: url("MaCFont-SemiBold.woff") format("woff");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "MaCFont";
+  src: url("MaCFont-SemiBoldItalic.woff") format("woff");
+  font-weight: 600;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "MaCFont";
+  src: url("MaCFont-Bold.woff") format("woff");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "MaCFont";
+  src: url("MaCFont-BoldItalic.woff") format("woff");
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "MaCFont";
+  src: url("MaCFont-ExtraBold.woff") format("woff");
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "MaCFont";
+  src: url("MaCFont-ExtraBoldItalic.woff") format("woff");
+  font-weight: 800;
+  font-style: italic;
+  font-display: swap;
+}
+
+
+/* ---------- MaCFontRound (angoli più morbidi) ---------- */
+
+@font-face {
+  font-family: "MaCFontRound";
+  src: url("MaCFontRound-SemiBold.woff") format("woff");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "MaCFontRound";
+  src: url("MaCFontRound-SemiBoldItalic.woff") format("woff");
+  font-weight: 600;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "MaCFontRound";
+  src: url("MaCFontRound-Bold.woff") format("woff");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "MaCFontRound";
+  src: url("MaCFontRound-BoldItalic.woff") format("woff");
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "MaCFontRound";
+  src: url("MaCFontRound-ExtraBold.woff") format("woff");
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "MaCFontRound";
+  src: url("MaCFontRound-ExtraBoldItalic.woff") format("woff");
+  font-weight: 800;
+  font-style: italic;
+  font-display: swap;
+}
