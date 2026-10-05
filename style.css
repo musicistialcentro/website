@@ -199,7 +199,7 @@ form {
   max-width: 340px;
   gap: 15px;
   font-size: var(--fs-base);
-  margin: 0 auto;
+  margin-inline: auto;
   border: 1px solid #ffffff;
   border-radius: 8px;
   padding: 20px;
@@ -302,6 +302,9 @@ form button:disabled {
 }
 
 /* ===== Informativa privacy ===== */
+.informativa > * + * {
+  margin-top: 0;
+}
 .informativa {
     max-width: 760px;
     padding: 0 20px 4vh;
@@ -309,15 +312,16 @@ form button:disabled {
 }
 .informativa h1 {
     font-size: var(--fs-sottotitolo);
+    margin-bottom: var(--spazio-piccolo);
 }
 .informativa h2 {
-    margin: 2em 0 0.5em;
+    margin: 1em 0 0.25em;
     font-size: clamp(1.125rem, 1rem + 0.6vw, 1.5rem);
     color: #ff6004;
 }
 .informativa p,
 .informativa ul {
-    margin-bottom: 1em;
+    margin-bottom: 0.6em;;
 }
 .informativa ul {
     padding-left: 1.5em;
@@ -350,6 +354,12 @@ form button:disabled {
   display: block;
   margin: 0 auto;
   border-radius: 7px;
+}
+
+/* ===== Titoli pagine ===== */
+.titolo-pagina {
+  font-size: var(--fs-sottotitolo);
+  color: #ff6004;
 }
 
 /* ===== Meno movimento per chi lo chiede ===== */

@@ -98,7 +98,7 @@ function attivaModulo(modulo, opzioni) {
             }
         } catch (errore) {
             conTransizione(() => {
-                esito.textContent = "Problema di connessione: riprova tra poco.";
+                esito.textContent = "Problema di connessione:\nriprova tra poco.";
             });
         }
 
@@ -150,13 +150,13 @@ function paginaDisiscrizione() {
     }
 
     attivaModulo(richiesta, {
-        messaggioOk: "Fatto!\nSe l'indirizzo è iscritto, riceverai a breve un'email con il link per confermare.",
+        messaggioOk: "Quasi fatto.\nSe l'indirizzo è corretto,\nriceverai un'email con il link per confermare.",
         messaggioErrore: "Controlla l'indirizzo email e riprova.",
     });
 
     attivaModulo(conferma, {
-        messaggioOk: "Iscrizione annullata.\nCi dispiace vederti andare!",
-        messaggioErrore: "Il link non è valido: richiedi una nuova email di conferma.",
+        messaggioOk: "Iscrizione annullata.\nNon riceverai più email da noi.",
+        messaggioErrore: "Il link non è valido:\nrichiedi una nuova email di conferma.",
     });
 }
 paginaDisiscrizione();
