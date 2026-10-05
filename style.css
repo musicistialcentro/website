@@ -3,6 +3,13 @@
   padding: 0;
   box-sizing: border-box;
 }
+[hidden] {
+  display: none !important;
+}
+
+a {
+  color: #ff6004;
+}
 
 /* ===== Scala tipografica ===== */
 :root {
@@ -270,6 +277,9 @@ form button:disabled {
 }
 .consenso a {
   color: #ff6004;
+}
+.istruzioni {
+  text-align: center;
 }
 .campo-trappola {
   position: absolute;

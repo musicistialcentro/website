@@ -1,6 +1,9 @@
-//////////////////////// Animazione del manifesto
-{
+//////////////////////// Animazione del manifesto (pagina principale)
+function animazioneManifesto() {
     const details = document.getElementById("mio-manifesto");
+    if (!details) {
+        return;
+    }
     const summary = details.querySelector("summary");
     const contenuto = details.querySelector(".manifesto-contenuto");
 
@@ -40,16 +43,16 @@
 
     contenuto.style.height = "0px";
 }
+animazioneManifesto();
 
 //////////////////////// Attiva lo stato :active su iOS
 document.addEventListener("touchstart", () => {}, { passive: true });
 
-//////////////////////// Modulo di iscrizione
-{
-    const modulo = document.getElementById("modulo-iscrizione");
-    const consenso = modulo.querySelector('input[name="consenso"]');
+//////////////////////// Invio di un modulo allo script Google (usata da tutti i moduli)
+function attivaModulo(modulo, opzioni) {
     const bottone = modulo.querySelector("button");
     const esito = modulo.querySelector(".esito");
+    const puoInviare = opzioni.puoInviare || (() => true);
 
     // Esegue una modifica al modulo animando il cambio di altezza
     function conTransizione(modifica) {
@@ -67,11 +70,7 @@ document.addEventListener("touchstart", () => {}, { passive: true });
         };
     }
 
-    bottone.disabled = !consenso.checked;
-
-    consenso.addEventListener("change", () => {
-        bottone.disabled = !consenso.checked;
-    });
+    bottone.disabled = !puoInviare();
 
     modulo.addEventListener("submit", async (evento) => {
         evento.preventDefault();
@@ -89,12 +88,12 @@ document.addEventListener("touchstart", () => {}, { passive: true });
 
             if (dati.esito === "ok") {
                 conTransizione(() => {
-                    esito.textContent = "Grazie!\nIscrizione ricevuta.";
+                    esito.textContent = opzioni.messaggioOk;
                     modulo.classList.add("inviato");
                 });
             } else {
                 conTransizione(() => {
-                    esito.textContent = "Controlla i dati inseriti e riprova.";
+                    esito.textContent = opzioni.messaggioErrore;
                 });
             }
         } catch (errore) {
@@ -103,6 +102,61 @@ document.addEventListener("touchstart", () => {}, { passive: true });
             });
         }
 
-        bottone.disabled = !consenso.checked;
+        bottone.disabled = !puoInviare();
     });
 }
+
+//////////////////////// Modulo di iscrizione (pagina principale)
+function moduloIscrizione() {
+    const modulo = document.getElementById("modulo-iscrizione");
+    if (!modulo) {
+        return;
+    }
+
+    const consenso = modulo.querySelector('input[name="consenso"]');
+    const bottone = modulo.querySelector("button");
+
+    consenso.addEventListener("change", () => {
+        bottone.disabled = !consenso.checked;
+    });
+
+    attivaModulo(modulo, {
+        puoInviare: () => consenso.checked,
+        messaggioOk: "Grazie!\nIscrizione ricevuta.\nControlla la tua casella email.",
+        messaggioErrore: "Controlla i dati inseriti e riprova.",
+    });
+}
+moduloIscrizione();
+
+//////////////////////// Pagina di disiscrizione
+function paginaDisiscrizione() {
+    const richiesta = document.getElementById("richiesta-disiscrizione");
+    const conferma = document.getElementById("conferma-disiscrizione");
+    if (!richiesta || !conferma) {
+        return;
+    }
+
+    // Se la pagina è stata aperta dal link personale, l'indirizzo contiene email e codice
+    const parametri = new URLSearchParams(location.search);
+    const email = parametri.get("email");
+    const codice = parametri.get("codice");
+
+    if (email && codice) {
+        richiesta.hidden = true;
+        conferma.hidden = false;
+        conferma.querySelector(".email-da-cancellare").textContent = email;
+        conferma.elements.email.value = email;
+        conferma.elements.codice.value = codice;
+    }
+
+    attivaModulo(richiesta, {
+        messaggioOk: "Fatto!\nSe l'indirizzo è iscritto, riceverai a breve un'email con il link per confermare.",
+        messaggioErrore: "Controlla l'indirizzo email e riprova.",
+    });
+
+    attivaModulo(conferma, {
+        messaggioOk: "Iscrizione annullata.\nCi dispiace vederti andare!",
+        messaggioErrore: "Il link non è valido: richiedi una nuova email di conferma.",
+    });
+}
+paginaDisiscrizione();

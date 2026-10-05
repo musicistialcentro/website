@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Annulla iscrizione – Musicisti al Centro</title>
+    <meta name="robots" content="noindex">
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="fonts/fontmac.css">
+    <script src="script.js" defer></script>
+
+    <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+    <link rel="icon" href="img/favicon-32.png" sizes="32x32" type="image/png">
+    <link rel="apple-touch-icon" href="img/favicon-appletouch.png">
+</head>
+
+<body>
+
+    <div class="stripa-animata" aria-hidden="true"></div>
+
+    <main>
+
+        <h1>ANNULLA ISCRIZIONE</h1>
+
+        <form id="richiesta-disiscrizione" action="https://script.google.com/macros/s/AKfycbzvm0ahV1tatnb3fHgFlFHqm1lBA6-UjfzWJsFNV6RTBGBuKVoVpqOeorVdo0gWZlbJ5A/exec" method="POST">
+            <p class="istruzioni">Inserisci l'email con cui ti sei iscritto: ti invieremo un link per confermare.</p>
+
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" autocomplete="email" required>
+            <input type="hidden" name="azione" value="richiesta-disiscrizione">
+
+            <button type="submit">INVIA</button>
+
+            <p class="esito" role="status"></p>
+        </form>
+
+        <form id="conferma-disiscrizione" action="https://script.google.com/macros/s/AKfycbzvm0ahV1tatnb3fHgFlFHqm1lBA6-UjfzWJsFNV6RTBGBuKVoVpqOeorVdo0gWZlbJ5A/exec" method="POST" hidden>
+            <p class="istruzioni">Vuoi annullare l'iscrizione di
+                <br><strong class="email-da-cancellare"></strong>
+                <br>alla mailing list?</p>
+
+            <input type="hidden" name="azione" value="conferma-disiscrizione">
+            <input type="hidden" name="email">
+            <input type="hidden" name="codice">
+
+            <button type="submit">CONFERMA</button>
+
+            <p class="esito" role="status"></p>
+        </form>
+
+        <p class="testo"><a href="index.html">Torna al sito</a></p>
+
+    </main>
+
+    <div class="stripa-animata" aria-hidden="true"></div>
+
+</body>
+
+</html>
