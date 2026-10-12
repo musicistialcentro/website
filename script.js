@@ -1,49 +1,47 @@
-//////////////////////// Animazione del manifesto (pagina principale)
-function animazioneManifesto() {
-    const details = document.getElementById("mio-manifesto");
-    if (!details) {
-        return;
-    }
-    const summary = details.querySelector("summary");
-    const contenuto = details.querySelector(".manifesto-contenuto");
+//////////////////////// Animazione delle sezioni a scomparsa (pagina principale)
+function animazioneSezioni() {
+    document.querySelectorAll(".manifesto-container").forEach((details) => {
+        const summary = details.querySelector("summary");
+        const contenuto = details.querySelector(".manifesto-contenuto");
 
-    summary.addEventListener("click", (evento) => {
-        if (!details.open) {
-            return;
-        }
-        evento.preventDefault();
+        summary.addEventListener("click", (evento) => {
+            if (!details.open) {
+                return;
+            }
+            evento.preventDefault();
 
-        if (details.classList.contains("in-chiusura")) {
-            details.classList.remove("in-chiusura");
-            contenuto.style.height = contenuto.scrollHeight + "px";
-        } else {
-            details.classList.add("in-chiusura");
-            contenuto.style.height = contenuto.offsetHeight + "px";
-            contenuto.offsetHeight;
-            contenuto.style.height = "0px";
-        }
+            if (details.classList.contains("in-chiusura")) {
+                details.classList.remove("in-chiusura");
+                contenuto.style.height = contenuto.scrollHeight + "px";
+            } else {
+                details.classList.add("in-chiusura");
+                contenuto.style.height = contenuto.offsetHeight + "px";
+                contenuto.offsetHeight;
+                contenuto.style.height = "0px";
+            }
+        });
+
+        details.addEventListener("toggle", () => {
+            if (details.open) {
+                contenuto.style.height = "0px";
+                contenuto.offsetHeight;
+                contenuto.style.height = contenuto.scrollHeight + "px";
+            }
+        });
+
+        contenuto.addEventListener("transitionend", () => {
+            if (details.classList.contains("in-chiusura")) {
+                details.classList.remove("in-chiusura");
+                details.open = false;
+            } else if (details.open) {
+                contenuto.style.height = "auto";
+            }
+        });
+
+        contenuto.style.height = "0px";
     });
-
-    details.addEventListener("toggle", () => {
-        if (details.open) {
-            contenuto.style.height = "0px";
-            contenuto.offsetHeight;
-            contenuto.style.height = contenuto.scrollHeight + "px";
-        }
-    });
-
-    contenuto.addEventListener("transitionend", () => {
-        if (details.classList.contains("in-chiusura")) {
-            details.classList.remove("in-chiusura");
-            details.open = false;
-        } else if (details.open) {
-            contenuto.style.height = "auto";
-        }
-    });
-
-    contenuto.style.height = "0px";
 }
-animazioneManifesto();
+animazioneSezioni();
 
 //////////////////////// Attiva lo stato :active su iOS
 document.addEventListener("touchstart", () => {}, { passive: true });

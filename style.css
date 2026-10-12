@@ -148,9 +148,6 @@ h1, h2,
   mask: url(img/badge.svg) center / contain no-repeat;
   transition: rotate 0.5s ease-in-out;
 }
-.freccia-sinistra {
-  scale: -1 1;
-}
 .manifesto-container {
   width: 100%;
   padding: 0 20px;
@@ -158,9 +155,6 @@ h1, h2,
 }
 .manifesto-container[open] .manifesto-contenuto {
   padding-bottom: 20px;
-}
-.manifesto-container[open]:not(.in-chiusura) .freccia-sinistra {
-  rotate: 90deg;
 }
 .manifesto-container[open]:not(.in-chiusura) .freccia-destra {
   rotate: -90deg;
@@ -171,6 +165,30 @@ h1, h2,
 .manifesto-contenuto ul {
   margin-top: 0;
   padding-left: 1.5em;
+}
+.manifesto-contenuto .lista-statuto {
+  margin-top: 0.4em;
+  list-style: none;
+  padding-left: 1.8em;
+  counter-reset: voce;
+}
+.lista-statuto li {
+  position: relative;
+  counter-increment: voce;
+}
+.lista-statuto li::before {
+  content: counter(voce) ".";
+  position: absolute;
+  left: -1.8em;
+}
+.lista-statuto.lettere li::before {
+  content: counter(voce, lower-alpha) ")";
+}
+.lista-statuto li + li {
+  margin-top: 0.4em;
+}
+.manifesto-contenuto .nota-finale {
+  text-align: center;
 }
 .manifesto-contenuto {
   overflow: hidden;
@@ -354,6 +372,28 @@ form button:disabled {
   display: block;
   margin: 0 auto;
   border-radius: 7px;
+}
+
+/* ===== Dati dell'associazione in fondo ===== */
+.dati-associazione {
+  text-align: center;
+  padding: 0 20px;
+  font-size: var(--fs-piccolo);
+  line-height: 1.6;
+  color: #aaaaaa;
+  letter-spacing: 0.02em;
+}
+.dati-associazione a {
+  color: inherit;
+  transition: color 0.5s ease;
+}
+@media (hover: hover) {
+  .dati-associazione a:hover {
+    color: #ff6004;
+  }
+}
+.dati-associazione a:active {
+  color: #ff6004;
 }
 
 /* ===== Titoli pagine ===== */
